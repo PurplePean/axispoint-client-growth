@@ -31,7 +31,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      details: "info@axispoint.com",
+      details: "info@axispointpartners.com",
       description: "For general inquiries and new client requests"
     },
     {
@@ -237,7 +237,7 @@ export default function Contact() {
                 <p className="text-xs text-muted-foreground text-center mt-4">
                   By submitting this form, you consent to be contacted about our services. 
                   We respect your privacy and do not share client information. 
-                  AxisPoint does not provide tax or legal advice.
+                  AxisPoint Partners does not provide tax or legal advice.
                 </p>
               </form>
             </div>

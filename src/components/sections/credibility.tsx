@@ -11,13 +11,13 @@ export function Credibility() {
 
   const team = [
     {
-      name: "Zachary Thompson",
+      name: "Zachary Russell",
       role: "Principal & Managing Director",
       image: teamZachary,
       credentials: "CRE, MBA"
     },
     {
-      name: "Ethan Rodriguez",
+      name: "Ethaniel Vu",
       role: "Licensed Transaction Partner",
       image: teamEthan,
       credentials: "Licensed Broker, CCIM"

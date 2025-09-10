@@ -24,7 +24,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-3">
             <div className="font-display text-xl font-semibold text-primary">
-              AxisPoint
+              AxisPoint Partners
             </div>
           </Link>
 

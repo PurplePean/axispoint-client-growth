@@ -23,20 +23,20 @@ export default function About() {
 
   const team = [
     {
-      name: "Zachary Thompson",
+      name: "Zachary Russell",
       role: "Principal & Managing Director",
       image: teamZachary,
       bio: "Zachary brings over 15 years of commercial real estate experience, specializing in institutional asset management and strategic portfolio optimization. He holds an MBA in Finance and maintains the CRE designation.",
       credentials: ["MBA, Finance", "Certified Realty Executive (CRE)", "Licensed Real Estate Professional"],
-      contact: "zachary@axispoint.com"
+      contact: "zachary@axispointpartners.com"
     },
     {
-      name: "Ethan Rodriguez",
+      name: "Ethaniel Vu",
       role: "Licensed Transaction Partner",
       image: teamEthan,
-      bio: "Ethan serves as our licensed broker partner, handling all transaction execution and leasing activities. With 12 years of market experience and CCIM certification, he ensures compliant and optimized deal execution.",
+      bio: "Ethaniel serves as our licensed broker partner, handling all transaction execution and leasing activities. With 12 years of market experience and CCIM certification, he ensures compliant and optimized deal execution.",
       credentials: ["Licensed Real Estate Broker", "CCIM Certification", "Commercial Investment Member"],
-      contact: "ethan@axispoint.com"
+      contact: "ethaniel@axispointpartners.com"
     }
   ];
 
@@ -47,11 +47,11 @@ export default function About() {
         <div className="container-axis">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-display text-4xl lg:text-6xl font-semibold text-primary mb-6">
-              The AxisPoint Story
+              The AxisPoint Partners Story
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Founded on the principle that commercial real estate deserves institutional-grade 
-              management regardless of portfolio size, AxisPoint bridges the gap between 
+              management regardless of portfolio size, AxisPoint Partners bridges the gap between 
               sophisticated investment strategies and accessible professional services.
             </p>
           </div>
@@ -161,8 +161,8 @@ export default function About() {
                 <div>
                   <h3 className="font-semibold text-primary mb-3">Regulatory Compliance</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    AxisPoint provides asset and portfolio management services. All brokerage and leasing 
-                    activities are conducted through our licensed partner, Ethan Rodriguez. We maintain 
+                    AxisPoint Partners provides asset and portfolio management services. All brokerage and leasing 
+                    activities are conducted through our licensed partner, Ethaniel Vu. We maintain 
                     appropriate licensing, bonding, and insurance coverage as required by state regulations.
                   </p>
                 </div>

@@ -26,7 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <Link to="/" className="font-display text-xl font-semibold">
-              AxisPoint
+              AxisPoint Partners
             </Link>
             <p className="mt-4 text-sm text-white/80 leading-relaxed">
               Institutional grade asset management for commercial real estate. 
@@ -86,10 +86,10 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-white/60">
-              © {new Date().getFullYear()} AxisPoint Asset Management. All rights reserved.
+              © {new Date().getFullYear()} AxisPoint Partners. All rights reserved.
             </p>
             <p className="text-xs text-white/60 mt-4 md:mt-0 max-w-md text-center md:text-right">
-              AxisPoint provides asset and portfolio management. Brokerage and leasing activities 
+              AxisPoint Partners provides asset and portfolio management. Brokerage and leasing activities 
               are conducted through our licensed partner. We do not provide tax or legal advice.
             </p>
           </div>
