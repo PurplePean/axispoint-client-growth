@@ -11,14 +11,14 @@ export function Credibility() {
   const team = [
     {
       name: "Zachary Russell",
-      role: "Principal & Managing Director",
+      role: "Multifamily Asset Manager & Acquisitions",
       credentials: "CRE, MBA",
       icon: TrendingUp,
       specialization: "Asset Management & Portfolio Strategy"
     },
     {
       name: "Ethaniel Vu",
-      role: "Licensed Transaction Partner",
+      role: "Commercial Real Estate Asset Manager & Leasing",
       credentials: "Licensed Broker, CCIM",
       icon: Users,
       specialization: "Transaction Execution & Leasing"
