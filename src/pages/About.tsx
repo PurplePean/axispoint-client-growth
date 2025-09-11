@@ -1,6 +1,4 @@
-import { Shield, Target, Users2 } from "lucide-react";
-import teamZachary from "@/assets/team-zachary.jpg";
-import teamEthan from "@/assets/team-ethan.jpg";
+import { Shield, Target, Users2, User, Mail, Award } from "lucide-react";
 
 export default function About() {
   const values = [
@@ -25,18 +23,18 @@ export default function About() {
     {
       name: "Zachary Russell",
       role: "Principal & Managing Director",
-      image: teamZachary,
       bio: "Zachary brings over 15 years of commercial real estate experience, specializing in institutional asset management and strategic portfolio optimization. He holds an MBA in Finance and maintains the CRE designation.",
       credentials: ["MBA, Finance", "Certified Realty Executive (CRE)", "Licensed Real Estate Professional"],
-      contact: "zachary@axispointpartners.com"
+      contact: "zachary@axispointpartners.com",
+      icon: User
     },
     {
       name: "Ethaniel Vu",
       role: "Licensed Transaction Partner",
-      image: teamEthan,
       bio: "Ethaniel serves as our licensed broker partner, handling all transaction execution and leasing activities. With 12 years of market experience and CCIM certification, he ensures compliant and optimized deal execution.",
       credentials: ["Licensed Real Estate Broker", "CCIM Certification", "Commercial Investment Member"],
-      contact: "ethaniel@axispointpartners.com"
+      contact: "ethaniel@axispointpartners.com",
+      icon: Award
     }
   ];
 
@@ -104,28 +102,33 @@ export default function About() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {team.map((member, index) => (
-              <div key={index} className="card-institutional p-8">
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-shrink-0">
-                    <img
-                      src={member.image}
-                      alt={`${member.name}, ${member.role}`}
-                      className="w-32 h-32 object-cover rounded-lg mx-auto md:mx-0"
-                    />
+              <div key={index} className="card-institutional p-8 hover-scale group">
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <member.icon className="h-8 w-8 text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-display text-2xl font-semibold text-primary mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="text-accent font-medium">
+                        {member.role}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-display text-2xl font-semibold text-primary mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-accent font-medium mb-4">
-                      {member.role}
-                    </p>
-                    <p className="text-body text-muted-foreground mb-6 leading-relaxed">
-                      {member.bio}
-                    </p>
-                    <div className="space-y-2">
-                      <h4 className="font-medium text-primary">Credentials:</h4>
-                      <ul className="space-y-1">
+                  
+                  <p className="text-body text-muted-foreground leading-relaxed">
+                    {member.bio}
+                  </p>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-primary mb-3 flex items-center gap-2">
+                        <Award className="h-4 w-4" />
+                        Credentials
+                      </h4>
+                      <ul className="space-y-2">
                         {member.credentials.map((credential, credIndex) => (
                           <li key={credIndex} className="flex items-center text-sm text-muted-foreground">
                             <div className="w-1.5 h-1.5 bg-accent rounded-full mr-3" />
@@ -133,6 +136,16 @@ export default function About() {
                           </li>
                         ))}
                       </ul>
+                    </div>
+                    
+                    <div className="pt-4 border-t border-border">
+                      <a 
+                        href={`mailto:${member.contact}`} 
+                        className="inline-flex items-center gap-2 text-accent hover:text-primary transition-colors story-link"
+                      >
+                        <Mail className="h-4 w-4" />
+                        {member.contact}
+                      </a>
                     </div>
                   </div>
                 </div>

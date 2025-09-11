@@ -1,5 +1,4 @@
-import teamZachary from "@/assets/team-zachary.jpg";
-import teamEthan from "@/assets/team-ethan.jpg";
+import { User, Award, TrendingUp, Users } from "lucide-react";
 
 export function Credibility() {
   const stats = [
@@ -13,14 +12,16 @@ export function Credibility() {
     {
       name: "Zachary Russell",
       role: "Principal & Managing Director",
-      image: teamZachary,
-      credentials: "CRE, MBA"
+      credentials: "CRE, MBA",
+      icon: TrendingUp,
+      specialization: "Asset Management & Portfolio Strategy"
     },
     {
       name: "Ethaniel Vu",
       role: "Licensed Transaction Partner",
-      image: teamEthan,
-      credentials: "Licensed Broker, CCIM"
+      credentials: "Licensed Broker, CCIM",
+      icon: Users,
+      specialization: "Transaction Execution & Leasing"
     }
   ];
 
@@ -54,23 +55,25 @@ export function Credibility() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {team.map((member, index) => (
-            <div key={index} className="card-institutional p-8 text-center">
-              <div className="relative w-24 h-24 mx-auto mb-6">
-                <img
-                  src={member.image}
-                  alt={`${member.name}, ${member.role}`}
-                  className="w-full h-full object-cover rounded-full"
-                />
+            <div key={index} className="card-institutional p-8 text-center hover-scale group animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <div className="relative w-20 h-20 mx-auto mb-6">
+                <div className="w-full h-full bg-gradient-to-br from-accent/20 to-primary/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                  <member.icon className="h-10 w-10 text-accent group-hover:text-primary transition-colors duration-300" />
+                </div>
               </div>
               <h3 className="text-display text-xl font-semibold text-primary mb-2">
                 {member.name}
               </h3>
-              <p className="text-accent font-medium mb-1">
+              <p className="text-accent font-medium mb-2">
                 {member.role}
               </p>
-              <p className="text-sm text-muted-foreground">
-                {member.credentials}
+              <p className="text-sm text-muted-foreground mb-3">
+                {member.specialization}
               </p>
+              <div className="inline-flex items-center gap-1 px-3 py-1 bg-accent/10 rounded-full">
+                <Award className="h-3 w-3 text-accent" />
+                <span className="text-xs font-medium text-accent">{member.credentials}</span>
+              </div>
             </div>
           ))}
         </div>
