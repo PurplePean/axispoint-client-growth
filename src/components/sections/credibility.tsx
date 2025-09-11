@@ -13,15 +13,13 @@ export function Credibility() {
       name: "Zachary Russell",
       role: "Multifamily Asset Manager & Acquisitions",
       credentials: "Real Estate Professional",
-      icon: TrendingUp,
-      specialization: "Asset Management & Portfolio Strategy"
+      icon: TrendingUp
     },
     {
       name: "Ethaniel Vu",
       role: "Commercial Real Estate Asset Manager & Leasing",
-      credentials: "CCIM",
-      icon: Users,
-      specialization: "Transaction Execution & Leasing"
+      credentials: "TREC License, CCIM",
+      icon: Users
     }
   ];
 
@@ -64,11 +62,8 @@ export function Credibility() {
               <h3 className="text-display text-xl font-semibold text-primary mb-2">
                 {member.name}
               </h3>
-              <p className="text-accent font-medium mb-2">
+              <p className="text-accent font-medium mb-3">
                 {member.role}
-              </p>
-              <p className="text-sm text-muted-foreground mb-3">
-                {member.specialization}
               </p>
               <div className="inline-flex items-center gap-1 px-3 py-1 bg-accent/10 rounded-full">
                 <Award className="h-3 w-3 text-accent" />
@@ -80,25 +75,7 @@ export function Credibility() {
 
         {/* Trust Indicators */}
         <div className="mt-16 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                <div className="w-6 h-6 bg-accent rounded-sm" />
-              </div>
-              <h4 className="font-semibold text-primary mb-2">Licensed & Bonded</h4>
-              <p className="text-sm text-muted-foreground text-center">
-                Fully licensed real estate professionals with comprehensive insurance coverage
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                <div className="w-6 h-6 bg-accent rounded-sm" />
-              </div>
-              <h4 className="font-semibold text-primary mb-2">Fiduciary Standard</h4>
-              <p className="text-sm text-muted-foreground text-center">
-                Committed to acting in our clients' best interests at all times
-              </p>
-            </div>
+          <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
                 <div className="w-6 h-6 bg-accent rounded-sm" />

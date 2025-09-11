@@ -32,7 +32,7 @@ export default function About() {
       name: "Ethaniel Vu",
       role: "Commercial Real Estate Asset Manager & Leasing",
       bio: "Ethaniel serves as our licensed broker partner, handling all transaction execution and leasing activities. With 12 years of market experience and CCIM certification, he ensures compliant and optimized deal execution.",
-      credentials: ["CCIM Certification", "Commercial Investment Member"],
+      credentials: ["TREC License", "CCIM Certification", "Commercial Investment Member"],
       contact: "ethaniel@axispointpartners.com",
       icon: Award
     }
