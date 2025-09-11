@@ -24,7 +24,7 @@ export default function About() {
       name: "Zachary Russell",
       role: "Multifamily Asset Manager & Acquisitions",
       bio: "Zachary brings over 15 years of commercial real estate experience, specializing in institutional asset management and strategic portfolio optimization. He holds an MBA in Finance and maintains the CRE designation.",
-      credentials: ["MBA, Finance", "Certified Realty Executive (CRE)", "Licensed Real Estate Professional"],
+      credentials: ["Licensed Real Estate Professional"],
       contact: "zachary@axispointpartners.com",
       icon: User
     },
@@ -32,7 +32,7 @@ export default function About() {
       name: "Ethaniel Vu",
       role: "Commercial Real Estate Asset Manager & Leasing",
       bio: "Ethaniel serves as our licensed broker partner, handling all transaction execution and leasing activities. With 12 years of market experience and CCIM certification, he ensures compliant and optimized deal execution.",
-      credentials: ["Licensed Real Estate Broker", "CCIM Certification", "Commercial Investment Member"],
+      credentials: ["CCIM Certification", "Commercial Investment Member"],
       contact: "ethaniel@axispointpartners.com",
       icon: Award
     }

@@ -12,14 +12,14 @@ export function Credibility() {
     {
       name: "Zachary Russell",
       role: "Multifamily Asset Manager & Acquisitions",
-      credentials: "CRE, MBA",
+      credentials: "Real Estate Professional",
       icon: TrendingUp,
       specialization: "Asset Management & Portfolio Strategy"
     },
     {
       name: "Ethaniel Vu",
       role: "Commercial Real Estate Asset Manager & Leasing",
-      credentials: "Licensed Broker, CCIM",
+      credentials: "CCIM",
       icon: Users,
       specialization: "Transaction Execution & Leasing"
     }
