@@ -7,6 +7,11 @@ import { Layout } from "@/components/layout/layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Services from "./pages/Services";
+import ForCPAs from "./pages/ForCPAs";
+import ForOwners from "./pages/ForOwners";
+import CaseStudies from "./pages/CaseStudies";
+import Insights from "./pages/Insights";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +27,11 @@ const App = () => (
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="services" element={<Services />} />
+            <Route path="for-cpas" element={<ForCPAs />} />
+            <Route path="for-owners" element={<ForOwners />} />
+            <Route path="case-studies" element={<CaseStudies />} />
+            <Route path="insights" element={<Insights />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
