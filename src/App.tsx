@@ -12,7 +12,7 @@ import Services from "./pages/Services";
 import ForCPAs from "./pages/ForCPAs";
 import ForOwners from "./pages/ForOwners";
 import CaseStudies from "./pages/CaseStudies";
-import Insights from "./pages/Insights";
+import Education from "./pages/Education";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,7 +33,7 @@ const App = () => (
             <Route path="for-cpas" element={<ForCPAs />} />
             <Route path="for-owners" element={<ForOwners />} />
             <Route path="case-studies" element={<CaseStudies />} />
-            <Route path="insights" element={<Insights />} />
+            <Route path="education" element={<Education />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

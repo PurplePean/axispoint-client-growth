@@ -43,7 +43,7 @@ export default function Contact() {
     {
       icon: MapPin,
       title: "Office",
-      details: "123 Financial District\nSuite 2500\nNew York, NY 10004",
+      details: "123 Financial District\nSuite 2500\nHouston, TX 77002",
       description: "By appointment only"
     },
     {

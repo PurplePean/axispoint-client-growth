@@ -18,7 +18,7 @@ export function Credibility() {
     {
       name: "Ethaniel Vu",
       role: "Commercial Real Estate Asset Manager & Leasing",
-      credentials: "TREC License, CCIM",
+      credentials: "TREC License",
       icon: Users
     }
   ];
