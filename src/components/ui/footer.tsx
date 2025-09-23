@@ -9,7 +9,7 @@ export function Footer() {
 
   const company = [
     { name: "About", href: "/about" },
-    { name: "Case Studies", href: "/case-studies" },
+    
     { name: "Education", href: "/education" },
     { name: "Contact", href: "/contact" },
   ];

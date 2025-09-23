@@ -12,7 +12,7 @@ export function Navbar() {
     { name: "Services", href: "/services" },
     { name: "For CPAs", href: "/for-cpas" },
     { name: "For Owners", href: "/for-owners" },
-    { name: "Case Studies", href: "/case-studies" },
+    
     { name: "Education", href: "/education" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },

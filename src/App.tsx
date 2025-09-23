@@ -11,7 +11,7 @@ import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import ForCPAs from "./pages/ForCPAs";
 import ForOwners from "./pages/ForOwners";
-import CaseStudies from "./pages/CaseStudies";
+
 import Education from "./pages/Education";
 import NotFound from "./pages/NotFound";
 
@@ -32,7 +32,7 @@ const App = () => (
             <Route path="services" element={<Services />} />
             <Route path="for-cpas" element={<ForCPAs />} />
             <Route path="for-owners" element={<ForOwners />} />
-            <Route path="case-studies" element={<CaseStudies />} />
+            
             <Route path="education" element={<Education />} />
           </Route>
           <Route path="*" element={<NotFound />} />

@@ -23,7 +23,7 @@ export default function About() {
     {
       name: "Zachary Russell",
       role: "Multifamily Asset Manager & Acquisitions",
-      bio: "Zachary brings 7 years of commercial real estate experience, specializing in institutional asset management and strategic portfolio optimization. He holds an MBA in Finance and maintains the CRE designation.",
+      bio: "Zachary brings 7 years of commercial real estate experience, specializing in institutional asset management and strategic portfolio optimization.",
       credentials: ["Real Estate Professional"],
       contact: "Zach@AxisPoint.LLC",
       icon: User

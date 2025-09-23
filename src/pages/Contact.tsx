@@ -30,21 +30,21 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
-      details: "info@axispointpartners.com",
-      description: "For general inquiries and new client requests"
+      title: "Email - Zachary",
+      details: "Zach@AxisPoint.llc",
+      description: "Asset Management & Acquisitions"
+    },
+    {
+      icon: Mail,
+      title: "Email - Ethaniel",
+      details: "Ethaniel@AxisPoint.llc",
+      description: "Leasing & Transaction Execution"
     },
     {
       icon: Phone,
       title: "Phone", 
-      details: "(555) 123-4567",
+      details: "(832) 580-2815",
       description: "Monday - Friday, 8:00 AM - 6:00 PM"
-    },
-    {
-      icon: MapPin,
-      title: "Office",
-      details: "123 Financial District\nSuite 2500\nHouston, TX 77002",
-      description: "By appointment only"
     },
     {
       icon: Clock,

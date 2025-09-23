@@ -1,12 +1,6 @@
 import { User, Award, TrendingUp, Users } from "lucide-react";
 
 export function Credibility() {
-  const stats = [
-    { value: "$2.3B+", label: "Assets Under Management" },
-    { value: "150+", label: "Transactions Completed" },
-    { value: "25+", label: "Years Combined Experience" },
-    { value: "98%", label: "Client Retention Rate" }
-  ];
 
   const team = [
     {
@@ -26,19 +20,6 @@ export function Credibility() {
   return (
     <section className="section-padding">
       <div className="container-axis">
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-display text-4xl lg:text-5xl font-semibold text-accent mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Leadership Team */}
         <div className="text-center mb-12">
