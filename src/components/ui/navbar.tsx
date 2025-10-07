@@ -9,13 +9,7 @@ export function Navbar() {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
-    { name: "For CPAs", href: "/for-cpas" },
-    { name: "For Owners", href: "/for-owners" },
-    
     { name: "Education", href: "/education" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -43,8 +37,8 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button size="sm" className="ml-4">
-              Get Started
+            <Button size="sm" className="ml-4" asChild>
+              <Link to="/contact">Contact</Link>
             </Button>
           </div>
 
@@ -79,8 +73,8 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button size="sm" className="w-full">
-                  Get Started
+                <Button size="sm" className="w-full" asChild>
+                  <Link to="/contact">Contact</Link>
                 </Button>
               </div>
             </div>

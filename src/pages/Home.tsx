@@ -1,15 +1,15 @@
 import { Hero } from "@/components/sections/hero";
-import { ServicesOverview } from "@/components/sections/services-overview";
-import { Credibility } from "@/components/sections/credibility";
-import { LeadForm } from "@/components/sections/lead-form";
+import { WhatWeDo } from "@/components/sections/what-we-do";
+import { OurApproach } from "@/components/sections/our-approach";
+import { GetInTouch } from "@/components/sections/get-in-touch";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ServicesOverview />
-      <Credibility />
-      <LeadForm />
+      <WhatWeDo />
+      <OurApproach />
+      <GetInTouch />
     </>
   );
 }

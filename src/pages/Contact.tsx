@@ -1,30 +1,102 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, Clock } from "lucide-react";
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
+  const [inquiryType, setInquiryType] = useState("");
+  const [mountTime] = useState(Date.now());
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Anti-spam: Reject if submitted too quickly
+    const timeSinceMount = Date.now() - mountTime;
+    if (timeSinceMount < 2000) {
+      toast({
+        title: "Please wait",
+        description: "Please take a moment to review your information.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsLoading(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const formData = new FormData(e.currentTarget);
+    
+    // Honeypot check
+    const honeypot = formData.get("company");
+    if (honeypot) {
+      // Silent fail for bots
+      setIsLoading(false);
+      return;
+    }
 
-    toast({
-      title: "Message sent successfully",
-      description: "We'll respond within 24 hours. Thank you for your interest in AxisPoint.",
-    });
+    const endpoint = import.meta.env.VITE_FORMS_ENDPOINT;
 
-    setIsLoading(false);
-    (e.target as HTMLFormElement).reset();
+    if (!endpoint) {
+      toast({
+        title: "Configuration Error",
+        description: "Form endpoint not configured.",
+        variant: "destructive"
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const formType = inquiryType === "professional" ? "cpa" : "general";
+    
+    const data = {
+      form: formType,
+      data: {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone") || "",
+        ...(inquiryType === "professional" && {
+          company_practice: formData.get("company_practice"),
+          role: formData.get("role"),
+          city_state: formData.get("city_state"),
+          client_focus: formData.get("client_focus"),
+        }),
+        message: formData.get("message") || "",
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    try {
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      toast({
+        title: "Message sent successfully",
+        description: "We'll respond within 24 hours. Thank you for your interest in AxisPoint.",
+      });
+
+      (e.target as HTMLFormElement).reset();
+      setInquiryType("");
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -56,6 +128,14 @@ export default function Contact() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact | AxisPoint Partners</title>
+        <meta 
+          name="description" 
+          content="Get in touch with AxisPoint Partners for commercial real estate asset management and advisory services." 
+        />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="section-padding bg-surface">
         <div className="container-axis">
@@ -64,8 +144,7 @@ export default function Contact() {
               Let's Discuss Your Real Estate Goals
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Connect with our team to explore how institutional-grade asset management 
-              can optimize your commercial real estate portfolio.
+              Connect with our team to explore how we can help optimize your commercial real estate investments.
             </p>
           </div>
         </div>
@@ -101,18 +180,6 @@ export default function Contact() {
                   </div>
                 ))}
               </div>
-
-              {/* CPA Referral Notice */}
-              <div className="card-institutional p-6 mt-8">
-                <h3 className="font-semibold text-primary mb-3">
-                  For CPA Referrals
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  We work collaboratively with accounting professionals to expand their 
-                  commercial real estate advisory services. Contact us to discuss our 
-                  co-branded resources and referral partnership opportunities.
-                </p>
-              </div>
             </div>
 
             {/* Contact Form */}
@@ -122,99 +189,115 @@ export default function Contact() {
               </h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name *</Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      required
-                      placeholder="First name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name *</Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      required
-                      placeholder="Last name"
-                    />
-                  </div>
+                {/* Honeypot field - hidden */}
+                <input
+                  type="text"
+                  name="company"
+                  style={{ position: 'absolute', left: '-9999px' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
+                <div className="space-y-2">
+                  <Label htmlFor="inquiryType">Inquiry Type *</Label>
+                  <Select 
+                    name="inquiryType" 
+                    required 
+                    value={inquiryType}
+                    onValueChange={setInquiryType}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select inquiry type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="general">General Inquiry</SelectItem>
+                      <SelectItem value="professional">Professional Collaboration</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
+                  <Label htmlFor="name">Name *</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email *</Label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
                     required
-                    placeholder="your.email@company.com"
+                    placeholder="your@email.com"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
+                  <Label htmlFor="phone">Phone {inquiryType === "general" ? "(optional)" : ""}</Label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="(555) 123-4567"
+                    placeholder="(832) 580-2815"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="company">Company/Organization</Label>
-                  <Input
-                    id="company"
-                    name="company"
-                    placeholder="Company name"
-                  />
-                </div>
+                {inquiryType === "professional" && (
+                  <>
+                    <div className="space-y-2">
+                      <Label htmlFor="company_practice">Company/Practice *</Label>
+                      <Input
+                        id="company_practice"
+                        name="company_practice"
+                        required
+                        placeholder="Your firm name"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="role">Role *</Label>
+                      <Input
+                        id="role"
+                        name="role"
+                        required
+                        placeholder="e.g., Managing Partner, CPA"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="city_state">City/State *</Label>
+                      <Input
+                        id="city_state"
+                        name="city_state"
+                        required
+                        placeholder="e.g., Houston, TX"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="client_focus">Client Focus *</Label>
+                      <Input
+                        id="client_focus"
+                        name="client_focus"
+                        required
+                        placeholder="e.g., Commercial RE investors"
+                      />
+                    </div>
+                  </>
+                )}
 
                 <div className="space-y-2">
-                  <Label htmlFor="role">Your Role *</Label>
-                  <Select name="role" required>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select your role" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="owner">Property Owner</SelectItem>
-                      <SelectItem value="investor">Real Estate Investor</SelectItem>
-                      <SelectItem value="cpa">CPA / Accountant</SelectItem>
-                      <SelectItem value="advisor">Financial Advisor</SelectItem>
-                      <SelectItem value="executive">Corporate Executive</SelectItem>
-                      <SelectItem value="manager">Property Manager</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject *</Label>
-                  <Select name="subject" required>
-                    <SelectTrigger>
-                      <SelectValue placeholder="What can we help with?" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="asset-management">Asset Management Services</SelectItem>
-                      <SelectItem value="transaction">Transaction Execution</SelectItem>
-                      <SelectItem value="advisory">Advisory Services</SelectItem>
-                      <SelectItem value="cpa-partnership">CPA Partnership</SelectItem>
-                      <SelectItem value="consultation">General Consultation</SelectItem>
-                      <SelectItem value="existing-client">Existing Client Support</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
+                  <Label htmlFor="message">Message {inquiryType === "professional" ? "(optional)" : "*"}</Label>
                   <Textarea
                     id="message"
                     name="message"
-                    required
-                    placeholder="Please describe your current situation and what you're looking to achieve..."
+                    required={inquiryType !== "professional"}
+                    placeholder="How can we help?"
                     className="min-h-[120px] resize-none"
                   />
                 </div>
@@ -223,21 +306,14 @@ export default function Contact() {
                   type="submit"
                   size="lg"
                   className="w-full"
-                  disabled={isLoading}
+                  disabled={isLoading || !inquiryType}
                 >
-                  {isLoading ? "Sending Message..." : "Send Message"}
+                  {isLoading ? "Sending..." : "Send Message"}
                 </Button>
-
-                <div className="flex items-center justify-center pt-4">
-                  <Button variant="outline" size="lg" type="button">
-                    Schedule a Discovery Call
-                  </Button>
-                </div>
 
                 <p className="text-xs text-muted-foreground text-center mt-4">
                   By submitting this form, you consent to be contacted about our services. 
-                  We respect your privacy and do not share client information. 
-                  AxisPoint Partners does not provide tax or legal advice.
+                  We respect your privacy and do not share client information.
                 </p>
               </form>
             </div>

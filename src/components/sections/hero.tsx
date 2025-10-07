@@ -19,26 +19,18 @@ export function Hero() {
       <div className="relative z-10 container-axis">
         <div className="max-w-3xl">
           <h1 className="text-display text-5xl lg:text-6xl xl:text-7xl font-semibold text-white mb-6 tracking-tight">
-            Institutional Grade Asset Management
+            Intelligent Asset Management for Real Estate Operators and Advisors.
           </h1>
           <p className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed">
-            For commercial real estate. We manage the plan, the people, and the performance 
-            so you do not carry the day to day burden.
+            We help owners and trusted advisors make clear decisions, protect cash flow, and compound long-term value.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent-light text-white border-0 px-8 py-3 text-lg font-medium"
+              asChild
             >
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white px-8 py-3 text-lg font-medium"
-            >
-              Learn More
+              <a href="/contact">Connect with AxisPoint <ArrowRight className="ml-2 h-5 w-5" /></a>
             </Button>
           </div>
         </div>
