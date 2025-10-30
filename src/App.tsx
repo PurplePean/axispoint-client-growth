@@ -6,12 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Layout } from "@/components/layout/layout";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Services from "./pages/Services";
-import ForCPAs from "./pages/ForCPAs";
-import ForOwners from "./pages/ForOwners";
-
 import Education from "./pages/Education";
 import NotFound from "./pages/NotFound";
 
@@ -27,12 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="services" element={<Services />} />
-            <Route path="for-cpas" element={<ForCPAs />} />
-            <Route path="for-owners" element={<ForOwners />} />
-            
             <Route path="education" element={<Education />} />
           </Route>
           <Route path="*" element={<NotFound />} />
