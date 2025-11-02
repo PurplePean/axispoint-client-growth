@@ -11,8 +11,10 @@ export function Hero() {
           src={heroImage}
           alt="Professional commercial real estate skyline"
           className="w-full h-full object-cover"
+          fetchPriority="high"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-navy/60" />
+        <div className="absolute inset-0 bg-navy/60" aria-hidden="true" />
       </div>
 
       {/* Content */}
@@ -25,21 +27,24 @@ export function Hero() {
             We help owners and trusted advisors make clear decisions, protect cash flow, and compound long-term value.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-accent hover:bg-accent-light text-white border-0 px-8 py-3 text-lg font-medium"
               asChild
             >
-              <a href="/contact">Connect with AxisPoint <ArrowRight className="ml-2 h-5 w-5" /></a>
+              <a href="/contact">
+                Connect with AxisPoint
+                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+              </a>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10" aria-label="Scroll down">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse" />
+          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse" aria-hidden="true" />
         </div>
       </div>
     </section>

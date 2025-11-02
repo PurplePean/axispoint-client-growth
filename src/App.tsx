@@ -8,6 +8,10 @@ import { Layout } from "@/components/layout/layout";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Education from "./pages/Education";
+import Services from "./pages/Services";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Compliance from "./pages/Compliance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +28,10 @@ const App = () => (
             <Route index element={<Home />} />
             <Route path="contact" element={<Contact />} />
             <Route path="education" element={<Education />} />
+            <Route path="services" element={<Services />} />
+            <Route path="privacy" element={<Privacy />} />
+            <Route path="terms" element={<Terms />} />
+            <Route path="compliance" element={<Compliance />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
