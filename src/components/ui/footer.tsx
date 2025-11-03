@@ -24,11 +24,15 @@ export function Footer() {
       <div className="container-axis section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
-            <Link to="/" className="font-display text-xl font-semibold">
-              AxisPoint Partners
+            <Link to="/" className="inline-block mb-4">
+              <img
+                src="/logo.svg"
+                alt="AxisPoint Partners"
+                className="h-12 w-auto brightness-0 invert"
+              />
             </Link>
-            <p className="mt-4 text-sm text-white/80 leading-relaxed">
-              Institutional grade asset management for commercial real estate. 
+            <p className="text-sm text-white/80 leading-relaxed">
+              Institutional grade asset management for commercial real estate.
               We manage the plan, the people, and the performance.
             </p>
           </div>

@@ -1,54 +1,47 @@
-# Welcome to your Lovable project
+# AxisPoint Partners - Client Growth Website
 
-## Project info
+Commercial real estate asset management and advisory services.
 
-**URL**: https://lovable.dev/projects/96a6320d-23f4-44c5-a082-a5f497caee6d
+## 🚀 Deployment Environments
 
-## How can I edit this code?
+### Production (Namecheap)
+- **URL**: Your custom domain on Namecheap
+- **Deploys**: Automatically when code is merged to `main` branch
+- **CI/CD**: GitHub Actions → FTP to Namecheap
 
-There are several ways of editing your application.
+### Preview (Netlify)
+- **URL**: Auto-generated preview URLs for each branch
+- **Deploys**: Automatically on every push to feature branches
+- **Purpose**: Review changes before merging to production
 
-**Use Lovable**
+## 🛠️ Local Development
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/96a6320d-23f4-44c5-a082-a5f497caee6d) and start prompting.
+### Prerequisites
+- Node.js 18+ & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Setup
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/PurplePean/axispoint-client-growth.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to project directory
+cd axispoint-client-growth
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Copy environment variables
+cp .env.example .env.local
+
+# Add your Google Apps Script endpoint to .env.local
+# VITE_FORMS_ENDPOINT=https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The dev server will start at `http://localhost:5173`
 
 ## What technologies are used for this project?
 
@@ -60,14 +53,81 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## 📦 Environment Variables
 
-Simply open [Lovable](https://lovable.dev/projects/96a6320d-23f4-44c5-a082-a5f497caee6d) and click on Share -> Publish.
+Required environment variables:
 
-## Can I connect a custom domain to my Lovable project?
+```env
+VITE_FORMS_ENDPOINT=https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec
+```
 
-Yes, you can!
+This endpoint should point to your Google Apps Script web app that handles form submissions.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🌐 Setting Up Netlify Preview Deployments
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+To enable automatic preview URLs for feature branches:
+
+1. **Sign up for Netlify** (free): https://app.netlify.com/signup
+2. **Import your repository**:
+   - Click "Add new site" → "Import an existing project"
+   - Connect to GitHub and select `axispoint-client-growth`
+3. **Configure build settings** (auto-detected from `netlify.toml`):
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+4. **Add environment variables** in Netlify:
+   - Go to Site settings → Environment variables
+   - Add `VITE_FORMS_ENDPOINT` with your Google Apps Script URL
+5. **Enable Deploy Previews**:
+   - Go to Site settings → Build & deploy → Deploy contexts
+   - Enable "Deploy previews" for all branches
+
+Now every push to a feature branch will generate a unique preview URL! 🎉
+
+### Preview Workflow
+```
+1. Create feature branch → Push changes
+2. Netlify auto-deploys → Get preview URL
+3. Review and iterate → Push more changes
+4. Approve → Merge to main
+5. Production deploys to Namecheap automatically
+```
+
+## 🏗️ Build Commands
+
+```sh
+# Development build
+npm run dev
+
+# Production build
+npm run build
+
+# Development build (with source maps)
+npm run build:dev
+
+# Preview production build locally
+npm run preview
+
+# Lint code
+npm run lint
+```
+
+## 📁 Project Structure
+
+```
+/src
+├── components/
+│   ├── ui/           # shadcn/ui components
+│   ├── sections/     # Page sections (hero, forms, etc.)
+│   └── layout/       # Layout components (navbar, footer)
+├── pages/            # Route pages
+├── hooks/            # Custom React hooks
+├── lib/              # Utilities
+└── App.tsx           # Router configuration
+```
+
+## 🔒 Security Features
+
+- Honeypot spam protection on forms
+- Timing-based anti-spam checks
+- Environment variable isolation
+- no-cors mode for external API calls

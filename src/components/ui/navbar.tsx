@@ -13,13 +13,15 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
+    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50" role="navigation" aria-label="Main navigation">
       <div className="container-axis">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="font-display text-xl font-semibold text-primary">
-              AxisPoint Partners
-            </div>
+          <Link to="/" className="flex items-center space-x-3" aria-label="AxisPoint Partners home">
+            <img
+              src="/logo.svg"
+              alt="AxisPoint Partners"
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -33,6 +35,7 @@ export function Navbar() {
                     ? "text-accent"
                     : "text-muted-foreground"
                 }`}
+                aria-current={location.pathname === item.href ? "page" : undefined}
               >
                 {item.name}
               </Link>
@@ -48,16 +51,19 @@ export function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden border-t border-border">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div id="mobile-menu" className="md:hidden border-t border-border">
+            <div className="px-2 pt-2 pb-3 space-y-1" role="menu">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -68,13 +74,15 @@ export function Navbar() {
                       : "text-muted-foreground"
                   }`}
                   onClick={() => setIsOpen(false)}
+                  role="menuitem"
+                  aria-current={location.pathname === item.href ? "page" : undefined}
                 >
                   {item.name}
                 </Link>
               ))}
               <div className="px-3 py-2">
                 <Button size="sm" className="w-full" asChild>
-                  <Link to="/contact">Contact</Link>
+                  <Link to="/contact" role="menuitem">Contact</Link>
                 </Button>
               </div>
             </div>

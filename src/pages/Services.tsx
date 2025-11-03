@@ -1,142 +1,154 @@
 import { Helmet } from "react-helmet-async";
-import { Building2, TrendingUp, Users, Calculator, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { Building2, TrendingUp, Users } from "lucide-react";
 
-const Services = () => {
+export default function Services() {
   const services = [
     {
+      id: "asset-management",
       icon: Building2,
       title: "Asset Management",
-      description: "Comprehensive management of your commercial real estate portfolio to maximize returns and minimize risks.",
-      features: ["Portfolio Optimization", "Performance Analytics", "Strategic Planning", "Risk Assessment"]
+      description: "Comprehensive oversight of your commercial real estate portfolio. We handle property operations, financial reporting, and strategic planning to maximize asset value and performance.",
+      features: [
+        "Property performance monitoring",
+        "Financial analysis and reporting",
+        "Strategic planning and execution",
+        "Vendor management and oversight"
+      ]
     },
     {
+      id: "transaction-execution",
       icon: TrendingUp,
-      title: "Investment Analysis",
-      description: "Deep-dive financial analysis and market research to identify the best investment opportunities.",
-      features: ["Market Research", "Financial Modeling", "Due Diligence", "Investment Strategy"]
+      title: "Transaction Execution",
+      description: "Expert guidance through complex commercial real estate transactions. From acquisition to disposition, we ensure seamless execution aligned with your investment objectives.",
+      features: [
+        "Market analysis and valuation",
+        "Deal structuring and negotiation",
+        "Due diligence coordination",
+        "Transaction management"
+      ]
     },
     {
+      id: "advisory",
       icon: Users,
-      title: "Leasing Services",
-      description: "Full-service leasing solutions to maximize occupancy and rental income for your properties.",
-      features: ["Tenant Acquisition", "Lease Negotiations", "Market Analysis", "Tenant Relations"]
-    },
-    {
-      icon: Calculator,
-      title: "Financial Consulting",
-      description: "Expert financial guidance to optimize your real estate investments and tax strategies.",
-      features: ["Tax Planning", "Cash Flow Analysis", "Refinancing Strategy", "Exit Planning"]
-    },
-    {
-      icon: Shield,
-      title: "Risk Management",
-      description: "Comprehensive risk assessment and mitigation strategies for your commercial properties.",
-      features: ["Insurance Review", "Compliance Monitoring", "Market Risk Analysis", "Portfolio Diversification"]
-    },
-    {
-      icon: Zap,
-      title: "Property Optimization",
-      description: "Enhance property value through strategic improvements and operational efficiency.",
-      features: ["Capital Improvements", "Operational Efficiency", "Energy Management", "Technology Integration"]
+      title: "Advisory Services",
+      description: "Strategic counsel for institutional-grade real estate decisions. We provide data-driven insights and recommendations to optimize your commercial real estate strategy.",
+      features: [
+        "Portfolio optimization",
+        "Investment strategy development",
+        "Market research and analysis",
+        "Risk assessment and mitigation"
+      ]
     }
   ];
 
   return (
     <>
       <Helmet>
-        <title>Commercial Real Estate Services | AxisPoint Partners</title>
-        <meta 
-          name="description" 
-          content="Comprehensive commercial real estate services including asset management, investment analysis, leasing, and financial consulting in Texas." 
+        <title>Services | AxisPoint Partners</title>
+        <meta
+          name="description"
+          content="Comprehensive commercial real estate services including asset management, transaction execution, and advisory services for institutional investors."
         />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="section-padding bg-gradient-to-br from-primary/5 to-accent/5">
-          <div className="container-axis">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
-                Commercial Real Estate Services
-              </h1>
-              <p className="text-body text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Comprehensive solutions for commercial real estate owners, investors, and CPAs seeking expert asset management and strategic guidance.
-              </p>
-              <Button size="lg" className="btn-institutional">
-                Schedule Consultation
-              </Button>
-            </div>
+      {/* Hero Section */}
+      <section className="section-padding bg-surface">
+        <div className="container-axis">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-display text-4xl lg:text-6xl font-semibold text-primary mb-6">
+              Our Services
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Institutional-grade commercial real estate services designed to maximize value
+              and performance across your portfolio.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Services Grid */}
-        <section className="section-padding">
-          <div className="container-axis">
-            <div className="text-center mb-16">
-              <h2 className="text-display text-3xl md:text-4xl font-bold text-primary mb-4">
-                Our Services
-              </h2>
-              <p className="text-body text-lg text-muted-foreground max-w-2xl mx-auto">
-                From asset management to strategic consulting, we provide the expertise you need to maximize your commercial real estate investments.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <Card key={index} className="card-institutional h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                      <service.icon className="h-6 w-6 text-accent" />
+      {/* Services Detailed Section */}
+      <section className="section-padding">
+        <div className="container-axis">
+          <div className="space-y-16">
+            {services.map((service, index) => (
+              <div
+                key={service.id}
+                id={service.id}
+                className="scroll-mt-24"
+              >
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                  index % 2 === 1 ? 'lg:grid-flow-dense' : ''
+                }`}>
+                  <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-lg mb-6">
+                      <service.icon className="h-8 w-8 text-accent" aria-hidden="true" />
                     </div>
-                    <CardTitle className="text-display text-xl text-primary">
+                    <h2 className="text-display text-3xl lg:text-4xl font-semibold text-primary mb-4">
                       {service.title}
-                    </CardTitle>
-                    <CardDescription className="text-body">
+                    </h2>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                       {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 bg-accent rounded-full mr-3" />
-                          {feature}
+                    </p>
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <svg
+                            className="h-6 w-6 text-accent flex-shrink-0 mr-3"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          <span className="text-primary">{feature}</span>
                         </li>
                       ))}
                     </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="section-padding bg-primary/5">
-          <div className="container-axis">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-display text-3xl md:text-4xl font-bold text-primary mb-4">
-                Ready to Optimize Your Portfolio?
-              </h2>
-              <p className="text-body text-lg text-muted-foreground mb-8">
-                Let our experienced team help you maximize the potential of your commercial real estate investments.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="btn-institutional">
-                  Get Started Today
-                </Button>
-                <Button size="lg" variant="outline">
-                  View Case Studies
-                </Button>
+                    <Button asChild size="lg">
+                      <Link to="/contact">
+                        Discuss This Service
+                      </Link>
+                    </Button>
+                  </div>
+                  <div className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
+                    <div className="card-institutional p-8 h-full flex items-center justify-center min-h-[300px]">
+                      <service.icon className="h-32 w-32 text-accent/20" aria-hidden="true" />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-padding bg-primary text-white">
+        <div className="container-axis">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-display text-3xl lg:text-4xl font-semibold mb-6">
+              Ready to Optimize Your Portfolio?
+            </h2>
+            <p className="text-lg text-white/90 mb-8 leading-relaxed">
+              Let's discuss how AxisPoint Partners can help you achieve your commercial
+              real estate investment objectives.
+            </p>
+            <Button asChild size="lg" variant="secondary">
+              <Link to="/contact">
+                Get in Touch
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
-};
-
-export default Services;
+}
