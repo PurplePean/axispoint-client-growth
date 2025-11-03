@@ -17,9 +17,11 @@ export function Navbar() {
       <div className="container-axis">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-3" aria-label="AxisPoint Partners home">
-            <div className="font-display text-xl font-semibold text-primary">
-              AxisPoint Partners
-            </div>
+            <img
+              src="/logo.svg"
+              alt="AxisPoint Partners"
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
