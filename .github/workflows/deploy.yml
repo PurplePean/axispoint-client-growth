@@ -29,12 +29,18 @@ jobs:
           VITE_FORMS_ENDPOINT: ${{ secrets.VITE_FORMS_ENDPOINT }}
         run: npm run build
 
-      - name: Create .htaccess for React Router
+      - name: Create .htaccess for HTTPS and React Router
         run: |
           cat > dist/.htaccess << 'EOF'
           <IfModule mod_rewrite.c>
             RewriteEngine On
             RewriteBase /
+
+            # Force HTTPS
+            RewriteCond %{HTTPS} off
+            RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+            # React Router - SPA routing
             RewriteRule ^index\.html$ - [L]
             RewriteCond %{REQUEST_FILENAME} !-f
             RewriteCond %{REQUEST_FILENAME} !-d
