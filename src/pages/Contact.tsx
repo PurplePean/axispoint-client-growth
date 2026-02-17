@@ -107,12 +107,6 @@ export default function Contact() {
       description: "Asset Management & Acquisitions"
     },
     {
-      icon: Mail,
-      title: "Email - Ethaniel",
-      details: "Ethaniel@AxisPoint.llc",
-      description: "Leasing & Transaction Execution"
-    },
-    {
       icon: Phone,
       title: "Phone", 
       details: "(832) 580-2815",
